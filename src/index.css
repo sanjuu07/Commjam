@@ -1,6 +1,102 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Inter", "Outfit", sans-serif;
+  --font-display: "Sora", "Outfit", sans-serif;
+}
 
 body {
-  background-color: #6be4f2;
+  background: radial-gradient(circle at 50% 0%, #191632 0%, #090a0f 65%), #06070a;
+  color: #f8fafc;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+}
+
+/* Custom premium visual elements */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-input {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+  outline: none;
+}
+
+.glass-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Ambient glow custom styles */
+.glow-text-purple {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+.glow-box-purple {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+}
+
+.glow-box-cyan {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.12);
+}
+
+/* Animations and custom transitions */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.1s linear;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.45);
+}
+
+/* Pulsing waves for custom recording animation */
+@keyframes wave-pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.6;
+  }
+}
+
+.recording-pulse {
+  animation: wave-pulse-scale 2s infinite ease-in-out;
 }

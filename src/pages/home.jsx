@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react"
 import PromptCard from "../components/PromptCard"
 import Recorder from "../components/Recorder"
+import { useAuth } from "../context/AuthContext"
 
 function Home() {
+  const { user } = useAuth()
+
   // Shared timer & prompt states
   const [currentPrompt, setCurrentPrompt] = useState({
     text: "Should AI be regulated like a public utility?",
@@ -69,7 +72,7 @@ function Home() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-purple-950/20 via-slate-900/30 to-indigo-950/15 border border-purple-500/10 rounded-3xl p-6 glow-box-purple">
         <div className="space-y-1">
           <h1 className="text-3xl font-display font-extrabold text-slate-100 tracking-tight">
-            Welcome, <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">Impromptu Speaker</span>
+            Welcome, <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">{user ? user.name : "Impromptu Speaker"}</span>
           </h1>
           <p className="text-xs md:text-sm text-slate-400 max-w-xl font-medium">
             CommJam helps you master spontaneous speaking. Pick an off-the-cuff question, start the microphone, and evaluate your tone, speech filler words, and confidence.
